@@ -8,8 +8,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "todo")
 public class Todo implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -19,7 +21,7 @@ public class Todo implements Serializable {
 	private Integer id;
 	private String titulo;
 	private String descricao;
-	private LocalDateTime daraParaFinalizar;
+	private LocalDateTime dataParaFinalizar;
 	private Boolean finalizado = false;
 
 	public Todo() {
@@ -31,7 +33,7 @@ public class Todo implements Serializable {
 		this.id = id;
 		this.titulo = titulo;
 		this.descricao = descricao;
-		this.daraParaFinalizar = daraParaFinalizar;
+		this.dataParaFinalizar = daraParaFinalizar;
 		this.finalizado = finalizado;
 	}
 
@@ -60,11 +62,11 @@ public class Todo implements Serializable {
 	}
 
 	public LocalDateTime getDaraParaFinalizar() {
-		return daraParaFinalizar;
+		return dataParaFinalizar;
 	}
 
 	public void setDaraParaFinalizar(LocalDateTime daraParaFinalizar) {
-		this.daraParaFinalizar = daraParaFinalizar;
+		this.dataParaFinalizar = daraParaFinalizar;
 	}
 
 	public Boolean getFinalizado() {
