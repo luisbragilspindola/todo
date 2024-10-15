@@ -10,10 +10,10 @@ import com.luis.todo.services.DBService;
 @Configuration
 @Profile("test")
 public class TestConfig {
-	
+
 	@Autowired
 	private DBService dbService;
-	
+
 	@Bean
 	public boolean intancia() {
 		this.dbService.IntanciaBaseDeDados();
