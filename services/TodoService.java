@@ -4,21 +4,22 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.luis.todo.domain.Todo;
 import com.luis.todo.repositories.TodoRepository;
+import com.luis.todo.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class TodoService {
 
 	@Autowired
 	private TodoRepository repository;
-
+	
 	public Todo findById(Integer id) {
 		Optional<Todo> obj = repository.findById(id);
-		return obj.orElse(null);
+		return obj.orElseThrow(() -> new ObjectNotFoundException(
+				"Objeto não encontrado! Id: " + id + ", Tipo: " + Todo.class.getName()));
 	}
 
 	public List<Todo> findAllOpen() {
